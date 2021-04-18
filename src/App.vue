@@ -1,83 +1,64 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <div class="new-user-form">
-      <Input placeholder="Nome" />
-      <Input placeholder="E-mail" />
-      <Input placeholder="Idade" />
-      <button type="submit">Salvar</button>
-    </div>
-  </div>
+  <v-app>
+    <!-- <v-app-bar
+      app
+      color="primary"
+      dark
+    >
+      <div class="d-flex align-center">
+        <v-img
+          alt="Vuetify Logo"
+          class="shrink mr-2"
+          contain
+          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          transition="scale-transition"
+          width="40"
+        />
+
+        <v-img
+          alt="Vuetify Name"
+          class="shrink mt-1 hidden-sm-and-down"
+          contain
+          min-width="100"
+          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
+          width="100"
+        />
+      </div>
+
+      <v-spacer></v-spacer>
+
+      <v-btn
+        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        target="_blank"
+        text
+      >
+        <span class="mr-2">Latest Release</span>
+        <v-icon>mdi-open-in-new</v-icon>
+      </v-btn>
+    </v-app-bar> -->
+
+    <v-main class="d-flex align-center justify-center">     
+      <Form />
+
+      <Table class="pa-6"/>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import Input from './components/Input.vue'
+import Form from './components/Form';
+import Table from './components/Table';
 
 export default {
   name: 'App',
+
   components: {
-    Input
-  }
-}
+    Form,
+    Table,
+  },
+
+  data: () => ({
+    //
+  }),
+};
 </script>
-
-<style lang="scss">
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-#app {
-  font: 400 1rem "Roboto", sans-serif;
-  width: 100vw;
-  height: 100vh;
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #e1e1e6;
-  background: #121214;
-}
-
-button {
-  cursor: pointer;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.new-user-form {
-  width: 100%;
-  max-width: 760px;
-  margin-top: 80px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  align-self: center;
-
-  button {
-    width: 15%;
-    height: 32px;
-    font-size: 16px;
-    background-color: green;
-    color: #e1e1e6;
-    border: 0;
-    border-radius: 8px;
-
-    transition: filter 0.2s;
-
-    &:hover {
-      filter: brightness(0.7);
-    }
-  }
-}
-</style>
