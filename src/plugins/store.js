@@ -5,24 +5,19 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   state: {
-    registration: { 
-      name: "",
-      email: "",
-      age: 0
-    },
     users: [],
   },
   mutations: {
-    addUser (state) {
-      if(state.registration.email !== "") {
-        state.users.push(state.registration);
-
-        state.registration = { 
-          name: "",
-          email: "",
-          age: 0
-        };
+    updateUserList (state, user) {
+      if(state.users.find(item => item.email === user.email)) {
+        state.users = state.users.filter(item => item.email !== user.email);
       }
+      state.users.push(user);
+    }
+  },
+  actions: {
+    updateUserList (context) {
+      context.commit('updateUserList')
     }
   }
 })

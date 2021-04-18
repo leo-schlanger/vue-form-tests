@@ -26,7 +26,7 @@
       @blur="$v.age.$touch()"
     ></v-text-field>
 
-    <v-div class="d-flex direction-row mt-4">
+    <div class="d-flex direction-row mt-4">
       <v-btn
         class="mr-4"
         @click="submit"
@@ -36,13 +36,15 @@
       <v-btn @click="clear">
         Limpar formulário
       </v-btn>
-    </v-div>
+    </div>
   </form>
 </template>
 
 <script>
+  //import { mapState } from 'vuex'
   import { validationMixin } from 'vuelidate'
   import { required, minLength, email, numeric, minValue } from 'vuelidate/lib/validators'
+
   export default {
     mixins: [validationMixin],
     validations: {
@@ -50,11 +52,13 @@
       email: { required, email },
       age: {required, numeric, minValue: minValue(1) }
     },
+
     data: () => ({
       name: '',
       email: '',
-      age: 1,
+      age: 1
     }),
+
     computed: {
       nameErrors () {
         const errors = []
@@ -79,12 +83,18 @@
         return errors
       },
     },
+
     methods: {
       submit () {
         this.$v.$touch()
 
         if (!this.$v.$invalid) {
-          console.log(this.name, this.email, this.age)
+          this.$store.commit('updateUserList', { 
+            name: this.name,
+            email: this.email,
+            age: this.age,
+          });
+          console.log(this.$store.state.users)
         }
       },
       clear () {
