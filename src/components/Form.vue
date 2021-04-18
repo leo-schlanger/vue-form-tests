@@ -41,7 +41,6 @@
 </template>
 
 <script>
-  //import { mapState } from 'vuex'
   import { validationMixin } from 'vuelidate'
   import { required, minLength, email, numeric, minValue } from 'vuelidate/lib/validators'
 
